@@ -77,7 +77,6 @@ namespace ProyectoDePOO
                         Console.WriteLine("Cerrando el programa.....");
                         break;
                 }
-
             } while (opcion != 6);
         }
     }
