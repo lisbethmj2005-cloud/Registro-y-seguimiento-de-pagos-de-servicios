@@ -78,3 +78,4 @@ namespace ProyectoDePOO
         }
     }
 }
+//Actividad 2 y Unas cuantas mejoras en el codigo:Sara
