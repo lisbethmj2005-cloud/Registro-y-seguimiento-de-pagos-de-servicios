@@ -1,0 +1,8 @@
+C:\Users\mase1\source\repos\ProyectoDePOO\ProyectoDePOO\bin\Debug\ProyectoDePOO.exe.config
+C:\Users\mase1\source\repos\ProyectoDePOO\ProyectoDePOO\bin\Debug\ProyectoDePOO.exe
+C:\Users\mase1\source\repos\ProyectoDePOO\ProyectoDePOO\bin\Debug\ProyectoDePOO.pdb
+C:\Users\mase1\source\repos\ProyectoDePOO\ProyectoDePOO\obj\Debug\ProyectoDePOO.csproj.AssemblyReference.cache
+C:\Users\mase1\source\repos\ProyectoDePOO\ProyectoDePOO\obj\Debug\ProyectoDePOO.csproj.CoreCompileInputs.cache
+C:\Users\mase1\source\repos\ProyectoDePOO\ProyectoDePOO\obj\Debug\ProyectoDePOO.exe
+C:\Users\mase1\source\repos\ProyectoDePOO\ProyectoDePOO\obj\Debug\ProyectoDePOO.pdb
+C:\Users\mase1\source\repos\ProyectoDePOO\ProyectoDePOO\obj\Debug\ProyectoDePOO.exe.config
