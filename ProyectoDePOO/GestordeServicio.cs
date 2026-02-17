@@ -11,16 +11,42 @@ namespace ProyectoDePOO
     {
         private List<Servicio> servicios = new List<Servicio>();
 
-        public void Agregar(Servicio s)
+        public void Agregar(Servicio serv)
         {
-            servicios.Add(s);
+            servicios.Add(serv);
         }
-
         public void MostrarT()
         {
-            foreach (Servicio s in servicios)
+            bool hayServicios = false;
+
+            foreach (Servicio serv in servicios)
             {
-                Console.WriteLine(s.Mostrar());
+                Console.WriteLine(serv.Mostrar());
+                hayServicios = true;
+            }
+            if (!hayServicios)
+            {
+                Console.WriteLine("No hay servicios registrados.");
+            }
+        }
+        public void BuscarPId(int id)
+        {
+            bool encontrado = false;
+
+            foreach (Servicio serv in servicios)
+            {
+                if (serv.Id == id)
+                {
+                    Console.WriteLine("El servicio ha sido encontrado:");
+                    Console.WriteLine(serv.Mostrar());
+                    encontrado = true;
+                    break;
+                }
+            }
+
+            if (!encontrado)
+            {
+                Console.WriteLine("El servicio no ha sido encontrado");
             }
         }
 
@@ -28,17 +54,23 @@ namespace ProyectoDePOO
         {
             StreamWriter sw = new StreamWriter("servicios.txt");
 
-            foreach (Servicio s in servicios)
+            foreach (Servicio serv in servicios)
             {
-                sw.WriteLine(s.Mostrar());
+                sw.WriteLine(serv.Mostrar());
             }
 
             sw.Close();
-            Console.WriteLine("Datos guardados");
+            Console.WriteLine("Los datos ya han sido guardados");
         }
 
         public void Leer()
         {
+            if (!File.Exists("servicios.txt"))
+            {
+                Console.WriteLine("No se ha guardado un archivo todavia.");
+                return;
+            }
+
             StreamReader sr = new StreamReader("servicios.txt");
             string linea;
 

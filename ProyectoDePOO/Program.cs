@@ -15,12 +15,14 @@ namespace ProyectoDePOO
 
             do
             {
+                Console.Clear();
                 Console.WriteLine("Lista de opciones");
                 Console.WriteLine("1. Agregar un servicio");
                 Console.WriteLine("2. Mostrar los servicios");
-                Console.WriteLine("3. Guardar en archivo");
-                Console.WriteLine("4. Leer archivo");
-                Console.WriteLine("5. Salir");
+                Console.WriteLine("3. Buscar servicio");
+                Console.WriteLine("4. Guardar en archivo");
+                Console.WriteLine("5. Leer archivo");
+                Console.WriteLine("6. Salir");
                 Console.Write("Selecciona una de las opciones disponibles: ");
 
                 opcion = int.Parse(Console.ReadLine());
@@ -51,23 +53,28 @@ namespace ProyectoDePOO
                         break;
 
                     case 3:
-                        gestor.Guardar();
+                        Console.Write("Ingrese el ID a buscar: ");
+                        int idBuscar = int.Parse(Console.ReadLine());
+                        gestor.BuscarPId(idBuscar);
+                        Console.ReadKey();
                         break;
 
                     case 4:
-                        gestor.Leer();
+                        gestor.Guardar();
+                        Console.ReadKey();
                         break;
 
                     case 5:
-                        Console.WriteLine("Cerrando el programa.....");
+                        gestor.Leer();
+                        Console.ReadKey();
                         break;
 
-                    default:
-                        Console.WriteLine("Esta opcion es invalida");
+                    case 6:
+                        Console.WriteLine("Cerrando el programa.....");
                         break;
                 }
 
-            } while (opcion != 5);
+            } while (opcion != 6);
         }
     }
 }
