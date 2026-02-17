@@ -11,16 +11,44 @@ namespace ProyectoDePOO
     {
         private List<Servicio> servicios = new List<Servicio>();
 
-        public void Agregar(Servicio s)
+        public void Agregar(Servicio serv)
         {
-            servicios.Add(s);
+            servicios.Add(serv);
         }
 
         public void MostrarT()
         {
-            foreach (Servicio s in servicios)
+            bool hayServicios = false;
+
+            foreach (Servicio serv in servicios)
             {
-                Console.WriteLine(s.Mostrar());
+                Console.WriteLine(serv.Mostrar());
+                hayServicios = true;
+            }
+            if (!hayServicios)
+            {
+                Console.WriteLine("No hay servicios registrados.");
+            }
+        }
+
+        public void BuscarPId(int id)
+        {
+            bool encontrado = false;
+
+            foreach (Servicio serv in servicios)
+            {
+                if (serv.Id == id)
+                {
+                    Console.WriteLine("El servicio ha sido encontrado:");
+                    Console.WriteLine(serv.Mostrar());
+                    encontrado = true;
+                    break;
+                }
+            }
+
+            if (!encontrado)
+            {
+                Console.WriteLine("El servicio no ha sido encontrado");
             }
         }
 
@@ -28,23 +56,51 @@ namespace ProyectoDePOO
         {
             StreamWriter sw = new StreamWriter("servicios.txt");
 
-            foreach (Servicio s in servicios)
+            foreach (Servicio serv in servicios)
             {
-                sw.WriteLine(s.Mostrar());
+                ServicioPagado sp = (ServicioPagado)serv;
+
+                sw.WriteLine(sp.Id);
+                sw.WriteLine(sp.Nombre);
+                sw.WriteLine(sp.Monto);
+                sw.WriteLine(sp.Estado);
             }
 
             sw.Close();
-            Console.WriteLine("Datos guardados");
+            Console.WriteLine("Datos han sido guardados correctamente.");
         }
 
         public void Leer()
         {
-            StreamReader sr = new StreamReader("servicios.txt");
-            string linea;
+            if (!File.Exists("servicios.txt"))
+                return;
 
-            while ((linea = sr.ReadLine()) != null)
+            servicios.Clear();
+
+            StreamReader sr = new StreamReader("servicios.txt");
+
+            while (true)
             {
-                Console.WriteLine(linea);
+                try
+                {
+                    string lineaId = sr.ReadLine();
+
+                    if (lineaId == null) 
+                        break;
+
+                    ServicioPagado sp = new ServicioPagado();
+
+                    sp.Id = int.Parse(lineaId);
+                    sp.Nombre = sr.ReadLine();
+                    sp.Monto = double.Parse(sr.ReadLine());
+                    sp.Estado = sr.ReadLine();
+
+                    servicios.Add(sp);
+                }
+                catch
+                {
+                    break;
+                }
             }
 
             sr.Close();
